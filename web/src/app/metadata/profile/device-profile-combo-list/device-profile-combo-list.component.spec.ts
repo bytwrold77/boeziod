@@ -19,10 +19,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 
 import { DeviceProfileComboListComponent } from './device-profile-combo-list.component';
+import { DeviceProfile } from '../../../contracts/v2/device-profile';
 
 describe('DeviceProfileComboListComponent: unit test', () => {
   let fixture: ComponentFixture<DeviceProfileComboListComponent>;
   let component: DeviceProfileComboListComponent;
+
+  const selectedProfiles = ["simple-profile-1     ","   simple-profile-2"]
+  const singleProfileSelected = 'simple-profile-name'
+  const singleProfileSelectedObjectExpected = {name: 'simple-profile-name'} as DeviceProfile
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -33,10 +38,20 @@ describe('DeviceProfileComboListComponent: unit test', () => {
 
     fixture = TestBed.createComponent(DeviceProfileComboListComponent);
     component = fixture.componentInstance;
+    component.selectedProfiles = selectedProfiles
     fixture.detectChanges();
   });
 
   it('renders without errors', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('sets the value of selectedProfilesStr correctly', () => {
+    expect(component.selectedProfilesStr).toEqual(selectedProfiles.toString());
+  });
+
+  it('sets singleProfileSelectedObject correctly', () => {
+    component.singleProfileSelected = singleProfileSelected
+    expect(component.singleProfileSelectedObject).toEqual(singleProfileSelectedObjectExpected);
   });
 });
