@@ -21,14 +21,14 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/edgexfoundry/edgex-ui-go/internal/common"
 	"github.com/edgexfoundry/edgex-ui-go/internal/component"
+	"github.com/edgexfoundry/edgex-ui-go/internal/core"
 	"github.com/edgexfoundry/edgex-ui-go/internal/domain"
 )
 
 func ExportShow(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
-	token := r.Header.Get(common.SessionTokenKey)
+	token := r.Header.Get(core.SessionTokenKey)
 
 	var addressable domain.Addressable
 	err := json.NewDecoder(r.Body).Decode(&addressable)
