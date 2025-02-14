@@ -22,6 +22,7 @@ import (
 	_ "net/http/pprof"
 	"time"
 	"fmt"
+	"github.com/edgexfoundry-holding/edgex-ui-go/web/app/common"
 )
 
 func main() {
@@ -31,7 +32,7 @@ func main() {
 	r := app.InitRestRoutes()
 
 	server := &http.Server{
-		Handler:      app.GeneralFilter(r),
+		Handler:      common.GeneralFilter(r),
 		Addr:         ":4000",
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout:  15 * time.Second,
