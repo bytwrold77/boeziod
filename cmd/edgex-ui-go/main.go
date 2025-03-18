@@ -17,6 +17,7 @@ package main
 import (
 	"github.com/edgexfoundry-holding/edgex-ui-go/initial"
 	"github.com/edgexfoundry-holding/edgex-ui-go/web/app"
+	"github.com/edgexfoundry-holding/edgex-ui-go/web/app/mongo"
 	"log"
 	"net/http"
 	_ "net/http/pprof"
@@ -25,6 +26,11 @@ import (
 )
 
 func main() {
+
+	ok := mongo.DBConnect()
+	if !ok {
+		return
+	}
 
 	initial.Initialize()
 
