@@ -20,4 +20,6 @@ type User struct {
 	Id       bson.ObjectId `bson:"_id,omitempty" json:"id"`
 	Name     string        `json:"name"`
 	Password string        `json:"password"`
+	Created  int64         `bson:"created" json:"created"`
+	Modified int64         `bson:"modified" json:"modified"`
 }
